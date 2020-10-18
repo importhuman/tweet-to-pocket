@@ -8,14 +8,20 @@ consumer_secret = os.environ.get('API_secretkey')
 
 #authenticate and call api
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-# api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
-api = tweepy.API(auth)
+api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
+# api = tweepy.API(auth)
 
 #prints out JSON of liked tweets 
-# fav = api.favorites('importhuman', count=5, tweet_mode='extended')
-# for status in fav:
-# 	print(status)
-# 	print('------------------------------------------')
+fav = api.favorites('importhuman', tweet_mode='extended')
+
+links = []
+for status in fav:
+	if status['entities']['urls'] != []:
+		link = status['entities']['urls'][0]['url']
+		links.append(link)
+		
+
+print(links)
 
 
 # tweet = api.get_status(1317381768811511808)
