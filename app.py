@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 import os
+import re
 import tweepy
 
 consumer_key = os.environ.get('API_key')
@@ -12,22 +13,28 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 # api = tweepy.API(auth)
 
 #prints out JSON of liked tweets 
-fav = api.favorites('importhuman', tweet_mode='extended')
+fav = api.favorites('importhuman', count=1000, tweet_mode='extended')
 
 links = []
+n = 0
 for status in fav:
-	if status['entities']['urls'] != []:
-		link = status['entities']['urls'][0]['url']
-		links.append(link)
-		
+	url_list = status['entities']['urls']
+	if url_list != []:
+		for item in url_list:
+			link = item['expanded_url']
+			if link not in links:
+				if re.search("//twitter.com/", link) is None:
+					links.append(link)
+					n += 1
 
 print(links)
+print(n)
 
 
-# tweet = api.get_status(1317381768811511808)
+# tweet = api.get_status(1317696890855694336)
 # for x in tweet:
 # 	print(x)
 
-# print(tweet['entities']['urls'][0]['url'])  gets the link from the tweet
+# print(tweet['entities'])  #gets the link from the tweet
 
 print("done")
