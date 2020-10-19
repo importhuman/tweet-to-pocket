@@ -3,16 +3,23 @@ load_dotenv()
 import os
 import re
 import tweepy
+from pocket import Pocket
 
+#Twitter keys
 consumer_key = os.environ.get('API_key')
 consumer_secret = os.environ.get('API_secretkey')
 
-#authenticate and call api
+#Pocket keys
+p_consumer_key = os.environ.get('Pocket_consumer_key')
+p_access_token = os.environ.get('Pocket_access_token')
+
+#authenticate and call twitter api
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
-# api = tweepy.API(auth)
 
-#prints out JSON of liked tweets 
+p = Pocket(consumer_key=p_consumer_key, access_token=p_access_token)
+
+#gets JSON of liked tweets 
 fav = api.favorites('importhuman', count=1000, tweet_mode='extended')
 
 links = []
@@ -25,6 +32,7 @@ for status in fav:
 			if link not in links:
 				if re.search("//twitter.com/", link) is None:
 					links.append(link)
+					p.add(link)
 					n += 1
 
 print(links)
