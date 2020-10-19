@@ -20,7 +20,7 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 p = Pocket(consumer_key=p_consumer_key, access_token=p_access_token)
 
 #gets JSON of liked tweets 
-fav = api.favorites('importhuman', count=1000, tweet_mode='extended')
+fav = api.favorites('importhuman', count=100, tweet_mode='extended')
 
 links = []
 n = 0
