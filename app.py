@@ -37,12 +37,3 @@ for status in fav:
 
 print(links)
 print(n)
-
-
-# tweet = api.get_status(1317696890855694336)
-# for x in tweet:
-# 	print(x)
-
-# print(tweet['entities'])  #gets the link from the tweet
-
-print("done")
