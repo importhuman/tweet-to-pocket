@@ -17,6 +17,6 @@ jobs:
           API_secretkey = ${{ secrets.API_SECRETKEY}}
           Pocket_consumer_key = ${{ secrets.POCKET_CONSUMER_KEY }}
           Pocket_access_token = ${{ secrets.POCKET_ACCESS_TOKEN }}
-        run:
+        run: |
           python3 app.py 
 
