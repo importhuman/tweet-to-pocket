@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: 3.8
       - run: |
-        pip install -r requirements.txt
+          pip install -r requirements.txt
       - env:
           API_key = ${{ secrets.API_KEY }}
           API_secretkey = ${{ secrets.API_SECRETKEY}}
