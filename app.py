@@ -1,17 +1,17 @@
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 import os
 import re
 import tweepy
 from pocket import Pocket
 
 #Twitter keys
-consumer_key = os.environ.get('API_key')
-consumer_secret = os.environ.get('API_secretkey')
+consumer_key = API_key
+consumer_secret = API_secretkey
 
 #Pocket keys
-p_consumer_key = os.environ.get('Pocket_consumer_key')
-p_access_token = os.environ.get('Pocket_access_token')
+p_consumer_key = Pocket_consumer_key
+p_access_token = Pocket_access_token
 
 #authenticate and call twitter api
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
