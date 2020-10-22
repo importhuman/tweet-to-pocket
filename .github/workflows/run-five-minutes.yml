@@ -10,15 +10,13 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-        with:
+        with: |
           python-version: 3.8
-      - run: |
-          pip install -r requirements.txt
+      - run: pip install -r requirements.txt
       - env: |
           API_key = ${{ secrets.API_KEY }}
           API_secretkey = ${{ secrets.API_SECRETKEY}}
           Pocket_consumer_key = ${{ secrets.POCKET_CONSUMER_KEY }}
           Pocket_access_token = ${{ secrets.POCKET_ACCESS_TOKEN }}
-        run: |
-          python3 app.py 
+        run: python3 app.py 
 
