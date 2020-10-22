@@ -23,7 +23,7 @@ p = Pocket(consumer_key=p_consumer_key, access_token=p_access_token)
 fav = api.favorites('importhuman', count=100, tweet_mode='extended')
 
 links = []
-n = 0
+# n = 0
 for status in fav:
 	url_list = status['entities']['urls']
 	if url_list != []:
@@ -33,7 +33,7 @@ for status in fav:
 				if re.search("//twitter.com/", link) is None:
 					links.append(link)
 					p.add(link)
-					n += 1
+					# n += 1
 
-print(links)
-print(n)
+# print(links)
+# print(n)
