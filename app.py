@@ -8,8 +8,8 @@ def main():
     load_dotenv()
 
     #Twitter keys
-    consumer_key = os.getenv('TWITTER_CONSUMER_KEY', '')
-    consumer_secret = os.getenv('TWITTER_CONSUMER_SECRET', '')
+    consumer_key = os.getenv('API_KEY', '')
+    consumer_secret = os.getenv('API_SECRETKEY', '')
 
     #Pocket keys
     # p_consumer_key = os.environ.get('POCKET_CONSUMER_KEY')
