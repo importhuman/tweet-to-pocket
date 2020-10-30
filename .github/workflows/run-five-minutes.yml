@@ -1,4 +1,4 @@
-name: run-five-minutes
+name: run-five-minutes-twitter
 
 on:
   schedule:
