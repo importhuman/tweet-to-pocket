@@ -6,12 +6,12 @@ import tweepy
 from pocket import Pocket
 
 #Twitter keys
-consumer_key = os.environ.get('API_key')
-consumer_secret = os.environ.get('API_secretkey')
+consumer_key = os.environ.get('API_KEY')
+consumer_secret = os.environ.get('API_SECRETKEY')
 
 #Pocket keys
-p_consumer_key = os.environ.get('Pocket_consumer_key')
-p_access_token = os.environ.get('Pocket_access_token')
+p_consumer_key = os.environ.get('POCKET_CONSUMER_KEY')
+p_access_token = os.environ.get('POCKET_ACCESS_TOKEN')
 
 #authenticate and call twitter api
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -23,7 +23,7 @@ p = Pocket(consumer_key=p_consumer_key, access_token=p_access_token)
 fav = api.favorites('importhuman', count=100, tweet_mode='extended')
 
 links = []
-n = 0
+# n = 0
 for status in fav:
 	url_list = status['entities']['urls']
 	if url_list != []:
@@ -33,7 +33,7 @@ for status in fav:
 				if re.search("//twitter.com/", link) is None:
 					links.append(link)
 					p.add(link)
-					n += 1
+					# n += 1
 
-print(links)
-print(n)
+# print(links)
+# print(n)
