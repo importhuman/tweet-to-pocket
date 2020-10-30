@@ -19,21 +19,21 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
 p = Pocket(consumer_key=p_consumer_key, access_token=p_access_token)
 
-#gets JSON of liked tweets 
+#gets JSON of liked tweets
 fav = api.favorites('importhuman', count=100, tweet_mode='extended')
 
 links = []
 # n = 0
 for status in fav:
-	url_list = status['entities']['urls']
-	if url_list != []:
-		for item in url_list:
-			link = item['expanded_url']
-			if link not in links:
-				if re.search("//twitter.com/", link) is None:
-					links.append(link)
-					p.add(link)
-					# n += 1
+    url_list = status['entities']['urls']
+    if url_list != []:
+        for item in url_list:
+            link = item['expanded_url']
+            if link not in links:
+                if re.search("//twitter.com/", link) is None:
+                    links.append(link)
+                    p.add(link)
+                    # n += 1
 
 # print(links)
 # print(n)
