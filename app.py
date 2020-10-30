@@ -1,40 +1,46 @@
 from dotenv import load_dotenv
-load_dotenv()
 import os
 import re
 import tweepy
 from pocket import Pocket
 
-#Twitter keys
-consumer_key = os.environ.get('TWITTER_CONSUMER_KEY')
-consumer_secret = os.environ.get('TWITTER_CONSUMER_SECRET')
+def main():
+    load_dotenv()
 
-#Pocket keys
-# p_consumer_key = os.environ.get('POCKET_CONSUMER_KEY')
-# p_access_token = os.environ.get('POCKET_ACCESS_TOKEN')
+    #Twitter keys
+    consumer_key = os.environ.get('TWITTER_CONSUMER_KEY')
+    consumer_secret = os.environ.get('TWITTER_CONSUMER_SECRET')
 
-#authenticate and call twitter api
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
+    #Pocket keys
+    # p_consumer_key = os.environ.get('POCKET_CONSUMER_KEY')
+    # p_access_token = os.environ.get('POCKET_ACCESS_TOKEN')
 
-# p = Pocket(consumer_key=p_consumer_key, access_token=p_access_token)
+    #authenticate and call twitter api
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
-#gets JSON of liked tweets
-fav = api.favorites('importhuman', count=100, tweet_mode='extended')
+    # p = Pocket(consumer_key=p_consumer_key, access_token=p_access_token)
 
-links = []
-# n = 0
-for status in fav:
-    url_list = status['entities']['urls']
-    if url_list != []:
-        for item in url_list:
-            link = item['expanded_url']
-            if link not in links:
-                if re.search("//twitter.com/", link) is None:
-                    links.append(link)
-                    print(link)
-                    # p.add(link)
-                    # n += 1
+    #gets JSON of liked tweets
+    fav = api.favorites('importhuman', count=100, tweet_mode='extended')
 
-# print(links)
-# print(n)
+    links = []
+    # n = 0
+    for status in fav:
+        url_list = status['entities']['urls']
+        if url_list != []:
+            for item in url_list:
+                link = item['expanded_url']
+                if link not in links:
+                    if re.search("//twitter.com/", link) is None:
+                        links.append(link)
+                        print(link)
+                        # p.add(link)
+                        # n += 1
+
+    # print(links)
+    # print(n)
+
+
+if __name__ == "__main__":
+    main()
