@@ -14,9 +14,9 @@ jobs:
           python-version: 3.8
       - run: pip install -r requirements.txt
         env: |
-          API_key = {{ secrets.API_KEY }}
-          API_secretkey = {{ secrets.API_SECRETKEY}}
-          Pocket_consumer_key = {{ secrets.POCKET_CONSUMER_KEY }}
-          Pocket_access_token = {{ secrets.POCKET_ACCESS_TOKEN }}
+          API_KEY = {{ secrets.API_KEY }}
+          API_SECRETKEY = {{ secrets.API_SECRETKEY}}
+          POCKET_CONSUMER_KEY = {{ secrets.POCKET_CONSUMER_KEY }}
+          POCKET_ACCESS_TOKEN = {{ secrets.POCKET_ACCESS_TOKEN }}
       - run: python3 app.py 
 
