@@ -38,8 +38,6 @@ def main():
                         # p.add(link)
                         # n += 1
 
-    # print(links)
-    # print(n)
 
 
 if __name__ == "__main__":
