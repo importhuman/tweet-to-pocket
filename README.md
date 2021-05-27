@@ -8,4 +8,4 @@ Steps to run (you'll need developer accounts for Twitter and Pocket):
 - Get a permanent access token for Pocket ([guide here](https://www.jamesfmackenzie.com/getting-started-with-the-pocket-developer-api/)). Add this to repository secrets as "POCKET_ACCESS_TOKEN".
 - Enable the workflow in the actions tab.
 
-*Note: The workflow is written to run every 5 minutes, but GitHub actions may not trigger on time. This is because the action is run whenever GitHub has a machine available ([source](https://upptime.js.org/blog/2021/01/22/github-actions-schedule-not-working/)).*
+*Note: The workflow is written to run every 5 minutes, but GitHub actions may not trigger on time. This is because the action is run whenever GitHub has a machine available, which may take a while ([source: Upptime blog](https://upptime.js.org/blog/2021/01/22/github-actions-schedule-not-working/)).*
