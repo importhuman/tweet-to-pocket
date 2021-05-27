@@ -34,7 +34,7 @@ def main():
                 if link not in links:
                     if re.search("//twitter.com/", link) is None:
                         links.append(link)
-                        print(link)
+                        # print(link)
                         p.add(link)
                         # n += 1
 
