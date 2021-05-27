@@ -1,6 +1,8 @@
 name: twitter
 
 on:
+  push:
+  pull_request:
   schedule:
     - cron: "*/5 * * * *"
     
